@@ -4,9 +4,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <link rel="apple-touch-icon" href="~/Graphics/HHapple-touch-icon-precomposed.png">
-    <link rel="icon" href="~/Graphics/favicon.png">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link rel="apple-touch-icon" href="touch-icon-ipad.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="touch-icon-ipad.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="touch-icon-iphone-retina.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="touch-icon-ipad-retina.png" />
+
+    <title>@ViewBag.Title - Headhunters A/S</title>
 
 
     @Styles.Render("~/Content/css")
@@ -17,20 +20,27 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Headhunters", "Index", "Home", null, new { @class = "navbar-brand" })
+                    @if (Request.IsAuthenticated)
+                    {
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                       </button>
+                    }
+
+                    @Html.ActionLink("Headhunters", "Index", "Home", null, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Hjem", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Om", "About", "Home")</li>
-                    <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
+                     @if (Request.IsAuthenticated)
+                    {
+                        <ul class="nav navbar-nav">
+                            <li>@Html.ActionLink("Hjem", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Om", "About", "Home")</li>
+                            <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
+                        </ul>
+                    }
+                    @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
@@ -38,7 +48,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Headhunters A/S</p>
         </footer>
     </div>
 
