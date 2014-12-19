@@ -7,8 +7,21 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <script language="javascript">
+    var a=document.getElementsByTagName("a");
+    for(var i=0;i
+    <a.length;i++) {
+                   if(!a[i].onclick && a[i].getattribute("target") !="_blank" ) {
+                   a[i].onclick=function() {
+                   window.location=this.getAttribute("href");
+                   return false;
+                   }
+                   }
+                   }
+        
+    </script>
 
-</head>
+        </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
